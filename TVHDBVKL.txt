@@ -1,0 +1,30 @@
+Huynh Minh Hoang
+Giao su
+Tien si
+Chu tich
+7.5
+kha
+Thai Tan Phat
+Pho giao su
+Thac si
+Chu tich
+8.0
+kha tot
+Nguyen Toan My
+Khong co
+Thac si
+Phan bien
+7.8
+kha
+Nguyen Thi Ngoc Yen
+Khong co
+Thac si
+uy vien
+8.0
+kha tot
+Phan Thi Yen Vi
+Khong co
+Thac si
+uy vien
+7.3
+kha
