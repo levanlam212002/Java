@@ -1,5 +1,7 @@
+package com.ntt.btl;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -12,21 +14,26 @@ import java.util.List;
  *
  * @author HP
  */
-public class BaoCaoThucTapTotNghiep extends BaoCao{
+public class BaoCaoThucTapTotNghiep extends com.ntt.btl.BaoCao {
     private String danhGiaCuaDoanhNghiep;
 
-    
-    public BaoCaoThucTapTotNghiep(String tenBC, String linkBC,String ngayBC,String tenGV,double diem,String danhGia) throws IOException{
+
+    public BaoCaoThucTapTotNghiep(String tenBC, String linkBC,Date ngayBC,String tenGV,double diem,String danhGia) throws IOException{
         super.BaoCao(tenBC,linkBC,ngayBC,tenGV,diem);
         this.danhGiaCuaDoanhNghiep = danhGia;
     }
-    
-     public void hienThi(){
-         super.hienThi();
-         System.out.printf("Danh gia cua doanh nghiep: %s\n", this.danhGiaCuaDoanhNghiep);
-         System.out.println("=========================================================");
-     }
-    
+
+    public BaoCaoThucTapTotNghiep(String tenBC, String linkBC,String ngayBC,String tenGV,double diem,String danhGia) throws IOException, ParseException {
+        super.BaoCao(tenBC,linkBC,ngayBC,tenGV,diem);
+        this.danhGiaCuaDoanhNghiep = danhGia;
+    }
+
+    public void hienThi(){
+        super.hienThi();
+        System.out.printf("Danh gia cua doanh nghiep: %s\n", this.danhGiaCuaDoanhNghiep);
+        System.out.println("=========================================================");
+    }
+
     /**
      * @return the danhGiaCuaDoanhNghiep
      */
@@ -40,5 +47,6 @@ public class BaoCaoThucTapTotNghiep extends BaoCao{
     public void setDanhGiaCuaDoanhNghiep(String danhGiaCuaDoanhNghiep) {
         this.danhGiaCuaDoanhNghiep = danhGiaCuaDoanhNghiep;
     }
-    
+
 }
+

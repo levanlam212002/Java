@@ -1,5 +1,8 @@
+package com.ntt.btl;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Date;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -10,20 +13,26 @@ import java.io.IOException;
  *
  * @author HP
  */
-public class BaoCaoDoAnNganh extends BaoCao{
+public class BaoCaoKhoaLuanTotNghiep extends com.ntt.btl.BaoCao {
     private double tyLeKiemTraDaoVan;
+    private List<TVHoiDongBVKL> ds;
 
-    public BaoCaoDoAnNganh(String tenBC, String linkBC,String ngayBC,String tenGV,double diem,double tyLe) throws IOException{
+    public BaoCaoKhoaLuanTotNghiep(String tenBC, String linkBC,Date ngayBC,String tenGV,double diem,double tyLe) throws IOException{
         super.BaoCao(tenBC,linkBC,ngayBC,tenGV,diem);
         this.tyLeKiemTraDaoVan = tyLe;
     }
-    
+
+    public void themTVHD(TVHoiDongBVKL tv){
+        this.ds.add(tv);
+    }
+
     public void hienThi(){
-         super.hienThi();
-         System.out.printf("Ty le kiem tra dao van: %s\n", this.tyLeKiemTraDaoVan);
-          System.out.println("=========================================================");
-     }
-    
+        super.hienThi();
+        System.out.printf("Danh gia cua doanh nghiep: %s\n", this.tyLeKiemTraDaoVan);
+        this.ds.forEach(tv -> tv.hienThi());
+        System.out.println("=========================================================");
+    }
+
     /**
      * @return the tyLeKiemTraDaoVan
      */
@@ -37,5 +46,20 @@ public class BaoCaoDoAnNganh extends BaoCao{
     public void setTyLeKiemTraDaoVan(double tyLeKiemTraDaoVan) {
         this.tyLeKiemTraDaoVan = tyLeKiemTraDaoVan;
     }
-    
+
+    /**
+     * @return the ds
+     */
+    public List<TVHoiDongBVKL> getDs() {
+        return ds;
+    }
+
+    /**
+     * @param ds the ds to set
+     */
+    public void setDs(List<TVHoiDongBVKL> ds) {
+        this.ds = ds;
+    }
+
 }
+

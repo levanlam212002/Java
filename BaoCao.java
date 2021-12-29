@@ -1,7 +1,10 @@
+package com.ntt.btl;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,39 +20,51 @@ import java.util.Scanner;
  * @author HP
  */
 public abstract class BaoCao{
+    private static final SimpleDateFormat F = new SimpleDateFormat("dd/MM/yyyy");
     private static int dem;
     protected int maBC;
     protected String tenBaoCao;
     protected String linkBaoCao;
-    private String ngayBaoCao;
+    private Date ngayBaoCao;
     private List<SinhVien> danhSachSV;
     protected String tenGVHD;
     protected double diemBaoCao;
-    
-    
-    public void BaoCao(String tenBC, String linkBC,String ngayBC,String tenGV,double diem) throws FileNotFoundException, IOException{
+
+
+    public void BaoCao(String tenBC, String linkBC,Date ngayBC,String tenGV,double diem) throws FileNotFoundException, IOException{
         this.maBC = ++dem;
         this.tenBaoCao = tenBC;
         this.linkBaoCao = linkBC;
-        this.setNgayBaoCao(ngayBC);
+        this.ngayBaoCao = ngayBC;
         this.tenGVHD = tenGV;
         this.diemBaoCao = diem;
         this.danhSachSV = new ArrayList<>();
     }
-    
+    //30/09/2021
+    public void BaoCao(String tenBC, String linkBC,String ngayBC,String tenGV,double diem) throws FileNotFoundException, IOException, ParseException {
+        this.ngayBaoCao = F.parse(ngayBC);
+
+        this.maBC = ++dem;
+        this.tenBaoCao = tenBC;
+        this.linkBaoCao = linkBC;
+        this.tenGVHD = tenGV;
+        this.diemBaoCao = diem;
+        this.danhSachSV = new ArrayList<>();
+    }
+
     public void themSV(SinhVien sv){
         this.danhSachSV.add(sv);
     }
-    
+
     public void hienThi(){
         System.out.printf("Ma bao cao: %03d\n", this.maBC);
         System.out.printf("Ten bao cao: %s\n", this.tenBaoCao);
         System.out.printf("Link bao cao: %s\n", this.linkBaoCao);
-        System.out.printf("Ngay bao cao: %s\n", this.getNgayBaoCao());
+        System.out.printf("Ngay bao cao: %s\n", F.format(this.ngayBaoCao));
         System.out.printf("Ten giang vien huong dan: %s\n", this.tenGVHD);
         System.out.printf("Diem bao : %s\n", this.diemBaoCao);
         this.danhSachSV.forEach(sv -> sv.hienThi());
-    } 
+    }
     /**
      * @return the maBC
      */
@@ -123,14 +138,14 @@ public abstract class BaoCao{
     /**
      * @return the ngayBaoCao
      */
-    public String getNgayBaoCao() {
+    public Date getNgayBaoCao() {
         return ngayBaoCao;
     }
 
     /**
      * @param ngayBaoCao the ngayBaoCao to set
      */
-    public void setNgayBaoCao(String ngayBaoCao) {
+    public void setNgayBaoCao(Date ngayBaoCao) {
         this.ngayBaoCao = ngayBaoCao;
     }
 
@@ -140,5 +155,6 @@ public abstract class BaoCao{
     public void setDanhSachSV(List<SinhVien> danhSachSV) {
         this.danhSachSV = danhSachSV;
     }
-    
+
 }
+
