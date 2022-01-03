@@ -27,7 +27,10 @@ public class TVHoiDongBVKL {
          System.out.printf("Nhan xet: %s\n", this.nhanXet);
          System.out.printf("Diem cham: %s\n", this.diem);
      }
-    
+    public void quanLiDiem(){
+        System.out.printf("Ten thanh vien hoi dong: %s\n", this.hoTen);
+        System.out.printf("Diem cham: %s\n", this.diem);
+    }
     /**
      * @return the hoTen
      */
